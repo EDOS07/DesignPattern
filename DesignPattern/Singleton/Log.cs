@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DesignPattern.Singleton
 {
-    public class Log
+    public sealed class Log
     {
         private readonly static Log _instance = new Log();
         private string _path = "log.txt";

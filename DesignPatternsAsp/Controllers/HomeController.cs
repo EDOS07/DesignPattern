@@ -1,18 +1,25 @@
 using DesignPatternsAsp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Tools;
 
 namespace DesignPatternsAsp.Controllers
 {
     public class HomeController : Controller
     {
+        public HomeController()
+        {
+        }
+
         public IActionResult Index()
         {
+            Log.GetInstance("log.txt").Save("HomeController Index action called.");
             return View();
         }
 
         public IActionResult Privacy()
         {
+            Log.GetInstance("log.txt").Save("HomeController Privacy action called.");
             return View();
         }
 
