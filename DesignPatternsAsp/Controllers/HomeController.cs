@@ -1,5 +1,7 @@
+using DesignPatternsAsp.Configuration;
 using DesignPatternsAsp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System.Diagnostics;
 using Tools;
 
@@ -7,19 +9,21 @@ namespace DesignPatternsAsp.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
+        private readonly IOptions<MyConfig> _config;
+        public HomeController(IOptions<MyConfig> config)
         {
+            _config = config;
         }
 
         public IActionResult Index()
         {
-            Log.GetInstance("log.txt").Save("HomeController Index action called.");
+            Log.GetInstance(_config.Value.PathLog).Save("HomeController Index action called.");
             return View();
         }
 
         public IActionResult Privacy()
         {
-            Log.GetInstance("log.txt").Save("HomeController Privacy action called.");
+            Log.GetInstance(_config.Value.PathLog).Save("HomeController Privacy action called.");
             return View();
         }
 

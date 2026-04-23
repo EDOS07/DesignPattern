@@ -1,0 +1,2 @@
+HomeController Index action called.
+HomeController Privacy action called.
